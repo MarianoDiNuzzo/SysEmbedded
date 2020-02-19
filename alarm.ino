@@ -1,4 +1,4 @@
-#include <DS3232RTC.h>              // library for real time clock 
+#include <DS3232RTC.h>                      // library for real time clock 
 #include <TimeLib.h>                        // The Time library adds timekeeping functionality to Arduino with or without external timekeeping hardware
 #include <Wire.h>                           // for analog pins and for I2C (Inter Integrated Circuit), serial communication systems used between integrated circuits
 #include <LiquidCrystal_I2C.h>              // library used to manage the display lcd
@@ -74,7 +74,6 @@ void setup() {                            // installation code to run only once
   pinMode(upButtonPin, INPUT);            // setting the up pin as input
   pinMode(downButtonPin, INPUT);          // setting the down pin as input
   pinMode(buzzerPin, OUTPUT);             // setting the buzzerPin previously declared at 10 as output
-                     // setting the digital pin as an output for the passive buzzer
   pinMode(4, OUTPUT);                     // setting the pin for the red led
   pinMode(3, OUTPUT);                     // setting the pin for the green led
 }
