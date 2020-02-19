@@ -1,4 +1,4 @@
-#include <DS3232RTC.h>				   		// library for real time clock 
+#include <DS3232RTC.h>              // library for real time clock 
 #include <TimeLib.h>                        // The Time library adds timekeeping functionality to Arduino with or without external timekeeping hardware
 #include <Wire.h>                           // for analog pins and for I2C (Inter Integrated Circuit), serial communication systems used between integrated circuits
 #include <LiquidCrystal_I2C.h>              // library used to manage the display lcd
@@ -28,7 +28,6 @@ int currentMinutes = 0;                     // variable required for calculating
 int currentSeconds = 0;                     // variable required for calculating seconds
 time_t currentTime = 0;
 time_t startTime = 0;
-time_t elapsedTime = 0;
 
 int resetButtonState = LOW;
 long resetButtonLongPressCounter = 0;
@@ -75,7 +74,7 @@ void setup() {                            // installation code to run only once
   pinMode(upButtonPin, INPUT);            // setting the up pin as input
   pinMode(downButtonPin, INPUT);          // setting the down pin as input
   pinMode(buzzerPin, OUTPUT);             // setting the buzzerPin previously declared at 10 as output
-  pinMode(10, OUTPUT);                    // setting the digital pin as an output for the passive buzzer
+                     // setting the digital pin as an output for the passive buzzer
   pinMode(4, OUTPUT);                     // setting the pin for the red led
   pinMode(3, OUTPUT);                     // setting the pin for the green led
 }
@@ -85,11 +84,12 @@ void loop() {        // start of the loop function which has the task of providi
   startStopButtonPressed = false;         // setting of the boolean variables needed by the keys
   upButtonPressed = false;
   downButtonPressed = false;
+  resetButtonPressed = false;
 
   /*
    * Reset button management
    */
-  resetButtonPressed = false;
+
   resetButtonLongPressed = false;
   resetButtonState = digitalRead(resetButtonPin);
   if (resetButtonState != resetButtonPrevState) {       // control on the state of the pressure of the key
@@ -324,10 +324,10 @@ void loop() {        // start of the loop function which has the task of providi
       digitalWrite(3, LOW);
       lcd.setCursor(0, 0);                // set the cursor to write on the display in the character present in the column and row in position 0 and 0
       lcd.print("     ZONA ROSSA");
-      lcd.setCursor(0, 1);                // set the cursor to write on the display in the character present in the second line and the first character
-      lcd.print("  INFERIORE A 10 CM ");
-      lcd.setCursor(0, 2);
-      lcd.print(" INTRUSO RIVELATO");
+   //   lcd.setCursor(0, 1);                // set the cursor to write on the display in the character present in the second line and the first character
+   //   lcd.print("  INFERIORE A 10 CM ");
+     lcd.setCursor(0, 1);
+     lcd.print(" INTRUSO RIVELATO");
       tone(10, 2000, 300);                // signal for pin 10 of the buzzer, activated by the respective method associated with frequency and duration
     }
 
@@ -336,9 +336,9 @@ void loop() {        // start of the loop function which has the task of providi
       digitalWrite(4, LOW);
       lcd.setCursor(0, 0);                // set the cursor to write on the display in the character present in the column and row in position 0 and 0
       lcd.print("    ZONA BIANCA");
-      lcd.setCursor(0, 1);                // set the cursor to write on the display in the character present in the second line and the first character
-      lcd.print("  SUPERIORE A 10 CM ");
-      lcd.setCursor(0, 2);
+   //   lcd.setCursor(0, 1);                // set the cursor to write on the display in the character present in the second line and the first character
+   //   lcd.print("  SUPERIORE A 10 CM ");
+     lcd.setCursor(0, 1);
       lcd.print(" NESSUN INTRUSO");
     }
                                
@@ -362,9 +362,9 @@ void loop() {        // start of the loop function which has the task of providi
       digitalWrite(4, LOW);
       lcd.setCursor(0, 0);                     // set the cursor to write on the display in the character present in the column and row in position 0 and 0
       lcd.print("    ZONA BIANCA");
-      lcd.setCursor(0, 1);                     // set the cursor to write on the display in the character present in the second line and the first character
-      lcd.print("  SUPERIORE A 10 CM ");
-      lcd.setCursor(0, 2);
+    //  lcd.setCursor(0, 1);                     // set the cursor to write on the display in the character present in the second line and the first character
+    //  lcd.print("  SUPERIORE A 10 CM ");
+     lcd.setCursor(0, 1);
       lcd.print(" NESSUN INTRUSO");
     }    
     
@@ -373,9 +373,9 @@ void loop() {        // start of the loop function which has the task of providi
       digitalWrite(3, LOW);
       lcd.setCursor(0, 0);                     // set the cursor to write on the display in the character present in the column and row in position 0 and 0
       lcd.print("     ZONA ROSSA");
-      lcd.setCursor(0, 1);                     // set the cursor to write on the display in the character present in the second line and the first character
-      lcd.print("  INFERIORE A 10 CM ");
-      lcd.setCursor(0, 2);
+   //   lcd.setCursor(0, 1);                     // set the cursor to write on the display in the character present in the second line and the first character
+   //   lcd.print("  INFERIORE A 10 CM ");
+   lcd.setCursor(0, 1);
       lcd.print(" INTRUSO RIVELATO");
       tone(10, 2000, 300);                     // signal for pin 10 of the buzzer, activated by the respective method associated with frequency and duration
     } 
